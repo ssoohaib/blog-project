@@ -1,0 +1,268 @@
+.compose{
+    height: 100vh;
+    background: url(../images/redPewdiepie.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* overflow: hidden; */
+}
+
+.compose-container{
+    /* background-color: white; */
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.compose-container>form{
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.compose-container>form>div{
+    /* border: 2px solid black; */
+    margin: 0 1rem;
+    
+}
+
+
+.left{
+    /* background-color: grey; */
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+}
+
+.left-content{
+    background-color: white;
+    height: auto;
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 1rem black;
+
+    
+}
+
+.left-content>div{
+    margin-top: 1.7rem;
+}
+
+.left-content>div>label{
+    margin: 0;
+    font-weight: 700;
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.list-container>select{
+    /* padding: 1rem; */
+    padding: .5rem 0;
+    border-width: 0 0 1px 0;
+    
+    /* font-size: 1.5rem; */
+}
+
+
+.title-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.title-container>input{
+    height: 2.5rem;
+    /* margin: .4rem 0; */
+    border-width: 0 0 1px 0;
+    /* font-size: .8rem; */
+}
+
+.title-container>input:focus{
+    outline:none;
+}
+
+
+.img-container{
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+
+.btn-cover {
+    /* border: 2px solid black; */
+    margin-top: .2rem;
+    border: none;
+    color: white;
+    background-color: #EC2550;
+    padding: .5rem .8rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    /* font-weight: 700; */
+}
+
+.img-container input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.middle{
+    background-color: white;
+    border-radius: 1rem;
+    width: 50%;
+    box-shadow: 0 0 1rem black;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.ql-snow{
+    /* align-items: center;
+    justify-content: center; */
+    /* text-align: center; */
+}
+
+
+
+button>svg{
+    /* border: 1px solid black; */
+    /* padding: 1rem; */
+    /* color: #EC2550; */
+    /* min-height: 1.2rem; */
+}
+
+.ql-snow>.q1-formats>.q1-bold>svg{
+    /* display:; */
+    /* color: red; */
+    /* font-size: 30rem; */
+}
+
+#quillEditor{
+    /* border-radius: 1rem; */
+}
+
+.q1-blank{
+    font-size: 10rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right{
+    /* background-color: grey; */
+    width: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    
+}
+
+.right>button{
+    box-shadow: 0 0 1rem black;
+    /* border: 1px solid black; */
+    border: none;
+    border-radius: 100%;
+    height: 12rem;
+    width: 12rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    font-size: 3rem;
+    /* color: #EC2550;     */
+    color: rgb(95, 92, 92);
+    /* font-weight: 700; */
+    background-color: white;
+
+    /* color: transparent; */
+}
+
+
+
+
+
+@media only screen and (max-width: 800px){
+    
+    .compose{
+        /* background-attachment: fixed; */
+        /* background-repeat: repeat; */
+        /* height: 100vh; */
+    }
+    .compose-container{
+        /* width: 50vw; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* height: 100%; */
+
+    }
+    .compose-container>form{
+        /* width: 50vw; */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        /* height: 100%; */
+
+    }
+
+    .compose-container>form>div{
+        margin: 1rem 0;
+        height: 100%;
+        
+    }
+
+    .left{
+        width: 80%;
+        /* min-height: 50%; */
+    }
+    .middle{
+        /* min-height: 50%; */
+        width: 80%;
+        /* min-height: 50%; */
+    }
+
+    .right{
+        width: 80%;
+        /* min-height: 50%; */
+    }
+}
+
