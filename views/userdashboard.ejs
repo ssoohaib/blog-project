@@ -15,7 +15,7 @@
 
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="./dashboard.css">
+    <link rel="stylesheet" href="../css/userdashboard.css">
     <title>Document</title>
 </head>
 
@@ -24,9 +24,18 @@
 
     <section class="user-controls">
         <div class="user-controls-container">
+            <div class="profile-cred">
+                <img src="./images/user.png" alt="">
+                <p><%= email %></p>
+            </div>
+            
+            <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-house"></i></button>
             <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-gear"></i></button>
             <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-trash"></i></button>
-            <button type="button" class="btn btn-dark btn-lg">SIGN OUT <i class="fa-solid fa-right-from-bracket"></i></button>
+
+            <form action="/signout" method="post">
+                <button type="submit" class="btn btn-dark btn-lg">SIGN OUT <i class="fa-solid fa-right-from-bracket"></i></button>
+            </form>
         </div>
     </section>
 
@@ -105,13 +114,6 @@
             </div>
         </div>
     </section>
-
-
-
-
-
-
-
 
 
     

@@ -3,7 +3,7 @@ const timestamp = require('time-stamp');
  
 
 //-Connection to mongoDB atlas server
-mongoose.connect('mongodb+srv://admin-joe:joe123@cluster0.8uljuc6.mongodb.net/blogDB');
+// const conn=mongoose.createConnection('mongodb+srv://blogproject:blogproject@cluster0.psobybf.mongodb.net/blogDB');
 
 //-Schema for collection
 const blogSchema=new mongoose.Schema({
@@ -29,5 +29,5 @@ exports.add=(req,res)=>{
         quill:req.body.quill
     });
     temp.save();
-    console.log('Doc Insert: SUCCESS');
+    console.log('(BLOG) Doc Insert: SUCCESS');
 }

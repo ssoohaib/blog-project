@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/signing.css">
+    <title>Document</title>
+</head>
+
+<body>
+    
+
+
+
+
+    <section class="credentials">
+        <div class="credentials-container">
+            <div class="left">
+
+                <div class="left-container">
+                    <% if(purpose == 'signup'){ %>
+                        <form action="signup" method="post">
+                            <h1>CREATE AN ACCOUNT</h1>
+                            <P>LET'S GET STARTED.</P>
+                            
+                            <% if(enteredCredentials) {%>
+
+                                <input name="username" type="text" placeholder="NAME" value="<%= enteredCredentials.username %>" disabled>
+                                <input name="email" type="text" placeholder="EMAIL" value="<%= enteredCredentials.email %>" disabled>
+                                <input name="password" type="text" placeholder="PASSWORD" value="<%= enteredCredentials.password %>" disabled>
+                                <button class="btn btn-light btn1" type="submit" disabled>CREATE AN ACCOUNT</button>
+                                <button class="btn btn-dark btn2" disabled>SIGN UP WITH GOOGLE</button>
+                                <p>AREADY HAVE AN ACCOUNT? <a href="signin">LOG IN</a></p>
+                                
+                            <% }else { %>
+                                <input name="username" type="text" placeholder="NAME" >
+                                <input name="email" type="text" placeholder="EMAIL">
+                                <input name="password" type="text" placeholder="PASSWORD">
+                                <button class="btn btn-light btn1" type="submit">CREATE AN ACCOUNT</button>
+                                <button class="btn btn-dark btn2">SIGN UP WITH GOOGLE</button>
+                                <p>AREADY HAVE AN ACCOUNT? <a href="signin">LOG IN</a></p>
+
+                            <% } %>    
+                        
+                        </form>
+                        <% if(enteredCredentials) {%>
+                            <form action="/signup/verified" method="post">
+                                <h1 style="margin-top: 1.4rem;">ENTER RECIEVED CODE</h1>
+                                <input name="buffer" value="<%= JSON.stringify(enteredCredentials) %>" type="text" style="display: none;">
+                                <input name="twoFactorCode" type="text" placeholder="CODE" maxlength="6" style="margin-bottom: 1.4rem;">
+                                <button class="btn btn-dark btn2" type="submit">VERIFY</button>
+                            </form>
+                        <% } %>
+
+                    <% } else { %>
+                        <form action="signin" method="post">
+                            <h1>LOG IN</h1>
+                            <P>LET'S GET GOING.</P>
+                            
+                            
+                            <% if(enteredCredentials) {%>
+                                <input name="email" type="text" placeholder="EMAIL" value="<%= enteredCredentials.email %>" disabled>
+                                <input name="password" type="text" placeholder="PASSWORD" value="<%= enteredCredentials.password %>" disabled>
+                                <button class="btn btn-light btn1" type="submit" disabled>SIGN IN</button>
+                                <button class="btn btn-dark btn2" disabled>SIGN IN WITH GOOGLE</button>
+                                <p>DON'T HAVE AN ACCOUNT? <a href="/signup">SIGN UP</a></p>
+                            <% }else { %>
+                                <input name="email" type="text" placeholder="EMAIL">
+                                <input name="password" type="text" placeholder="PASSWORD">
+                                <button class="btn btn-light btn1" type="submit">SIGN IN</button>
+                                <button class="btn btn-dark btn2">SIGN IN WITH GOOGLE</button>
+                                <p>DON'T HAVE AN ACCOUNT? <a href="/signup">SIGN UP</a></p>
+                            <% } %>       
+                        
+                        </form>
+                        <% if(enteredCredentials) {%>
+                            <form action="/signin/verified" method="post">
+                                <h1 style="margin-top: 1.4rem;">ENTER RECIEVED CODE</h1>
+                                <p>TWO-FACTOR </p>
+                                <input name="twoFactorCode" type="text" placeholder="CODE" maxlength="6" style="margin-bottom: 1.4rem;">
+                                <button class="btn btn-dark btn2" type="submit">VERIFY</button>
+                            </form>
+                        <% } %>
+
+                        
+                    <% } %>   
+
+                    
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="right-text">
+                    <h1>AXOLE.</h1>
+                    <p>POWER MODERN APPLICATIONS WITH ENRICHED QUERYING.</p>
+                </div>
+                <!-- <img src="test2.png" alt=""> -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <script src="https://kit.fontawesome.com/9c1c3f6a2e.js" crossorigin="anonymous"></script>
+</body>
+
+</html>

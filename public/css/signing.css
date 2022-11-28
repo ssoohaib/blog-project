@@ -29,6 +29,7 @@ form>h1{
 }
 
 
+
 form{
     margin: .8rem 0;
     display: flex;
@@ -64,7 +65,7 @@ form>p{
     color: white;
     /* background-color: yellow; */
     width: 70%;
-    background: url(./test4.png);
+    background: url(../images/redPewdiepie.png);
     background-size: cover;
     background-position: center;
     
@@ -74,7 +75,8 @@ form>p{
 }
 
 .right-text{
-    max-width: 50%;
+    /* max-width: 50%; */
+    width: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

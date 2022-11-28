@@ -4,10 +4,10 @@ ul>li{
 
 .user-controls{
     height: 20vh;
-    /* background-color: #f8f8f8; */
+    background-color: #f8f8f8;
     margin-bottom: 1.4rem;
 
-    background: url(./test4.png);
+    background: url(../images/redPewdiepie.png);
 }
 
 .user-controls-container{
@@ -17,11 +17,38 @@ ul>li{
     height: 100%;
 }
 
+.profile-cred{
+    background-color: #cfd0d3;
+    box-shadow: 0 0 1rem black;
+    border-radius: 1rem;
+    margin-right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem 1rem;
+    width: auto;
+    /* height: 100%; */
+}
+
+.user-controls-container>.profile-cred>img{
+    /* margin-right: 1rem; */
+    max-width: 5rem;
+    max-height: 5rem;
+    border-radius: 100%;
+    margin-bottom: .5rem;
+    /* box-shadow: 0 0 1rem black; */
+}
+
+.profile-cred>p{
+    color: black;
+    margin: 0;
+}
 
 .user-controls-container>button{
-    margin: 0 .3rem;
-    box-shadow: 0 0 1rem  black;
+    box-shadow: 0 0 1rem black;
 
+    margin: 0 .3rem;
 }
 
 .btn-1{
@@ -119,7 +146,7 @@ ul>li{
 
 .upper{
     height: 40%;
-    background: url(./test4.png);
+    background: url(../images/redPewdiepie.png);
     display: flex;
     justify-content: center;
     align-items: center;
