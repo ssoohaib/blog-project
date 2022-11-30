@@ -49,12 +49,11 @@ router.get('/userdashboard',isAuth,(req,res)=>{
     res.render('userDashboard',{email:req.session.email})
 })
 
+
 router.get('/admindashboard',isAuth,(req,res)=>{
     res.render('admindashboard',{email:req.session.email})
 })
 
 router.post('/signout',user.signout);
-
-
 
 module.exports=router;
