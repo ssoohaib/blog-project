@@ -1,33 +1,24 @@
-const mongoose = require('mongoose');
+const mysql=require('mysql')
 const timestamp = require('time-stamp');
- 
 
-//-Connection to mongoDB atlas server
-// const conn=mongoose.createConnection('mongodb+srv://blogproject:blogproject@cluster0.psobybf.mongodb.net/blogDB');
-
-//-Schema for collection
-const blogSchema=new mongoose.Schema({
-    userID:String,
-    title:String,
-    category:String,
-    date:String,
-    comments:[],
-    coverImg:String,
-    quill:String
-})
-const blog=mongoose.model("blog",blogSchema);
-
+var conn = mysql.createConnection({
+    host     : '127.0.0.1',
+    user     : 'root',
+    password : '',
+    database : 'blogDB'
+});
+   
+conn.connect(err=>{});
 
 exports.add=(req,res)=>{
-    const temp=new blog({
-        userID:'-',
-        title:req.body.title,
-        category:req.body.category,
-        date:timestamp('DD-MM-YYYY  HH:mm:ss'),
-        
-        coverImg:'-',
-        quill:req.body.quill
-    });
-    temp.save();
-    console.log('(BLOG) Doc Insert: SUCCESS');
+
+    let {category,title,quill}=req.body;
+    let {originalname}=req.file;
+    let bid=Math.floor(Math.random() * 1000000000);
+    var sql="insert into blogs (bid,uid,title,category,date,coverImg,quill) values ('"+bid+"','"+req.session.email+"','"+title+"','"+category+"','"+timestamp('DD-MM-YYYY  HH:mm:ss')+"','"+originalname+"','"+quill+"')";
+
+    conn.query(sql,(err,result)=>{
+        if(err)throw err;
+        console.log('(BLOG) Doc Insert: SUCCESS');
+    })
 }

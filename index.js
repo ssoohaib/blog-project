@@ -5,6 +5,7 @@ const session = require("express-session");
 var MySQLStore = require('express-mysql-session')(session);
 const mysql=require('mysql');
 
+
 var connection = mysql.createConnection({
     host     : '127.0.0.1',
     user     : 'root',
@@ -17,7 +18,7 @@ connection.connect(err=>{
 });
 
 const indexRoutes=require('./routes/index.routes');
-// const blogRoutes=require('./routes/blog.routes');
+const blogRoutes=require('./routes/blog.routes');
 const userRoutes=require('./routes/authentication.routes');
 
 const app=express();
@@ -44,7 +45,7 @@ app.use(
 );
 
 app.use('/',indexRoutes);
-// app.use('/',blogRoutes);
+app.use('/',blogRoutes);
 app.use('/',userRoutes);
 
 
