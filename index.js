@@ -44,6 +44,7 @@ app.use(
 );
 
 app.use('/',indexRoutes);
+// app.use('/',blogRoutes);
 app.use('/',userRoutes);
 
 
