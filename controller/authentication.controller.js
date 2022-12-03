@@ -1,14 +1,50 @@
 const mysql=require('mysql')
 const timestamp = require('time-stamp');
 
+// var conn = mysql.createConnection({
+//     host     : 'sql6.freemysqlhosting.net',
+//     user     : 'sql6582207',
+//     password : 'UENh22yBdU',
+//     database : 'sql6582207' 
+// });
+   
 var conn = mysql.createConnection({
     host     : '127.0.0.1',
     user     : 'root',
     password : '',
     database : 'blogDB'
 });
-   
+
 conn.connect(err=>{});
+
+exports.delete=(req,res)=>{
+
+    console.log('post -- '+req.params.ext);
+    let sql="delete from users where email = '"+req.params.ext+"'"
+
+    conn.query(sql,(err,result)=>{
+        if(err)throw err;
+        res.redirect('/admindashboard')
+    })
+}
+
+exports.fetch_users=(req,res)=>{
+
+    var sql='select * from users';
+    conn.query(sql,(err,result)=>{
+        if(err)throw err;
+        // console.log(result);
+
+        if(req.session.protocol=='admin')
+        {
+            res.render('admindashboard',{
+                email:req.session.email,
+                users:result
+            })
+        }
+    })
+}
+
 
 exports.add=async (req,res)=>{
 
@@ -38,7 +74,10 @@ exports.find_signin= async(req,res)=>{
         req.session.isAuth=true;
         req.session.email=email;
 
-        if(result[0].protocol=='admin')return res.redirect('/admindashboard');
+        if(result[0].protocol=='admin'){
+            req.session.protocol='admin';
+            return res.redirect('/admindashboard');
+        }
        
         res.render('signing',{
             purpose:'signin',

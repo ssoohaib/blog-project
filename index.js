@@ -13,19 +13,36 @@ var connection = mysql.createConnection({
     database : 'blogDB'
 });
    
+// var connection = mysql.createConnection({
+//     host     : 'sql6.freemysqlhosting.net',
+//     user     : 'sql6582207',
+//     password : 'UENh22yBdU',
+//     database : 'sql6582207'
+// });
+
 connection.connect(err=>{
 
 });
 
 const indexRoutes=require('./routes/index.routes');
 const blogRoutes=require('./routes/blog.routes');
-const userRoutes=require('./routes/authentication.routes');
+const userAuthRoutes=require('./routes/authentication.routes');
+const userEditRoutes=require('./routes/users.edit');
+
 
 const app=express();
 
 app.set("view engine", "ejs"); // set the view engine to ejs
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+
+// var options = {
+// 	host: 'sql6.freemysqlhosting.ne',
+// 	port: 3306,
+// 	user: 'sql6582207',
+// 	password : 'UENh22yBdU',
+//     database : 'blogDB'
+// };
 
 var options = {
 	host: '127.0.0.1',
@@ -46,7 +63,9 @@ app.use(
 
 app.use('/',indexRoutes);
 app.use('/',blogRoutes);
-app.use('/',userRoutes);
+app.use('/',userAuthRoutes);
+app.use('/',userEditRoutes);
+
 
 
 

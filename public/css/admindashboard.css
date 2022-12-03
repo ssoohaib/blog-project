@@ -45,7 +45,7 @@ ul>li{
     margin: 0;
 }
 
-.user-controls-container>button{
+.user-controls-container>button, .user-controls-container>form>button{
     box-shadow: 0 0 1rem black;
 
     margin: 0 .3rem;
@@ -70,7 +70,7 @@ ul>li{
 /* users */
 .users{
     /* background-color: grey; */
-    height: 100vh;
+    /* height: 100vh; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,15 +98,6 @@ ul>li{
     
 }
 
-.user-row{
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;   
-    margin: 0 0 3rem 0;
-}
-
-
 
 .list-header{
     /* background-color: red; */
@@ -131,11 +122,18 @@ ul>li{
     width: 4rem;
 }
 
+.user-row{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;   
+    margin: 1.5rem 0;
+}
 
 .user{
     height: 30vh;
     width: 30vh;
-    border: 1px solid #23272B;
+    border: 1px solid #b5b6b8;
     border-radius: .4rem;
 }
 
@@ -188,21 +186,33 @@ ul>li{
     justify-content: center;
 
     font-size: .9rem;
-    
+    overflow: hidden;
 }
 
 
 .lower>ul>li>a{
     color: black;
 }
-
+.lower>ul>li>form>button{
+    /* color: white; */
+}
 .dlt-user{
     background-color: #EC2550 !important;
     /* height: 100px; */
     /* color: red; */
 }
-.dlt-user>a{
-    color: white !important;
+.dlt-user>form>button{
+    background-color: #EC2550;
+    border: none;
+    color: white ;
+}
+.dlt-user>form{
+    /* width: 100%; */
+    /* height: 100%; */
+}
+.dlt-user>:hover{
+    /* box-shadow: 0 0 .5rem black !important; */
+    /* background-color: white !important; */
 }
 /* 
 .lower>ul>li>button{

@@ -45,14 +45,28 @@ router.post('/signup',user.find_signup);
 router.post('/signup/verified',user.add);
 
 
-router.get('/userdashboard',isAuth,(req,res)=>{
-    res.render('userDashboard',{email:req.session.email})
-})
+// router.get('/userdashboard',isAuth,(req,res)=>{
+//     if(req.session.protocol=='admin')
+//     {
+//         console.log('----'+req.session.protocol);
+//         res.redirect('/admindashboard')
+//     }
+//     res.render('userDashboard',{email:req.session.email})
+// })
 
 
-router.get('/admindashboard',isAuth,(req,res)=>{
-    res.render('admindashboard',{email:req.session.email})
-})
+// router.get('/admindashboard',isAuth,(req,res)=>{
+//     if(req.session.protocol=='admin')
+//     {
+
+//         res.render('admindashboard',{email:req.session.email})
+//     }
+
+
+//     // res.render('userDashboard',{email:req.session.email})
+// })
+
+router.get('/admindashboard',isAuth,user.fetch_users);
 
 router.post('/signout',user.signout);
 

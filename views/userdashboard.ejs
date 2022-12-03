@@ -49,64 +49,32 @@
             <div class="blog-list">
 
                 <div class="list-header">
-                    <h3>All (3)</h3>
-                    <button  type="button" class="btn btn-dark btn-lg btn-add"><i class="fa-solid fa-plus"></i></button>
+                    <h3>All (<%= blogs.length %>)</h3>
+                    <a href="/compose" type="button" class="btn btn-dark btn-lg btn-add"><i class="fa-solid fa-plus"></i></a>
                 </div>
                 
+
+                <% for(let i=0;i<blogs.length;i++){ %>
                 
-                <div class="list-item">
-                    <h1>U</h1>
-                    <div class="blog-info">
-                        <ul class="ul-info">
-                            <li><i class="fa-solid fa-heading"></i>Title</li>
-                            <li><i class="fa-solid fa-user"></i>ADMIN</li>
-                            <li><i class="fa-solid fa-caret-right"></i>Category</li>
-                            <li><i class="fa-solid fa-calendar"></i>Jan. 20, 2022</li>
-                        </ul>
+                    <div class="list-item">
+                        <h1><%= blogs[i].title[0] %></h1>
+                        <div class="blog-info">
+                            <ul class="ul-info">
+                                <li><i class="fa-solid fa-heading"></i><%= blogs[i].title %></li>
+                                <li><i class="fa-solid fa-caret-right"></i><%= blogs[i].category %></li>
+                                <li><i class="fa-solid fa-calendar"></i><%= blogs[i].date %></li>
+                            </ul>
 
-                        <ul class="ul-controls">
-                            <li><i class="fa-solid fa-eye"></i>VIEW</li>
-                            <li><i class="fa-solid fa-pen-to-square"></i>EDIT</li>
-                            <li class="btn-blog-delete"><i class="fa-solid fa-trash"></i>DELETE</li>
-                        </ul>
+                            <ul class="ul-controls">
+                                <li><i class="fa-solid fa-eye"></i>VIEW</li>
+                                <li><i class="fa-solid fa-pen-to-square"></i>EDIT</li>
+                                <li class="btn-blog-delete"><i class="fa-solid fa-trash"></i>DELETE</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
 
-                <div class="list-item">
-                    <h1>U</h1>
-                    <div class="blog-info">
-                        <ul class="ul-info">
-                            <li><i class="fa-solid fa-heading"></i>Title</li>
-                            <li><i class="fa-solid fa-user"></i>ADMIN</li>
-                            <li><i class="fa-solid fa-caret-right"></i>Category</li>
-                            <li><i class="fa-solid fa-calendar"></i>Jan. 20, 2022</li>
-                        </ul>
-
-                        <ul class="ul-controls">
-                            <li><i class="fa-solid fa-eye"></i>VIEW</li>
-                            <li><i class="fa-solid fa-pen-to-square"></i>EDIT</li>
-                            <li class="btn-blog-delete"><i class="fa-solid fa-trash"></i>DELETE</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="list-item">
-                    <h1>U</h1>
-                    <div class="blog-info">
-                        <ul class="ul-info">
-                            <li><i class="fa-solid fa-heading"></i>Title</li>
-                            <li><i class="fa-solid fa-user"></i>ADMIN</li>
-                            <li><i class="fa-solid fa-caret-right"></i>Category</li>
-                            <li><i class="fa-solid fa-calendar"></i>Jan. 20, 2022</li>
-                        </ul>
-
-                        <ul class="ul-controls">
-                            <li><i class="fa-solid fa-eye"></i>VIEW</li>
-                            <li><i class="fa-solid fa-pen-to-square"></i>EDIT</li>
-                            <li class="btn-blog-delete"><i class="fa-solid fa-trash"></i>DELETE</li>
-                        </ul>
-                    </div>
-                </div>
+                <% } %>
+                
                 
                 
 

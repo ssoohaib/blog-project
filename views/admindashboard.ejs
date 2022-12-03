@@ -43,118 +43,113 @@
 
     <section class="users">
         <div class="list-header">
-            <h3>All (3)</h3>
-            <button  type="button" class="btn btn-dark btn-lg btn-add"><i class="fa-solid fa-plus"></i></button>
+            <h3>All (<%= users.length %>)</h3>
+            <a href="/compose"  type="button" class="btn btn-dark btn-lg btn-add"><i class="fa-solid fa-plus"></i></a>
         </div>
 
         <div class="users-container">
-            <div class="user-row">
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">ID# 10246</a></li>
-                            <li><a href="#">POSTS (0)</a></li>
-                            <li><a href="#">ACCOUNT</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">RESTRICT</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
+           
+
+        <% if(users.length>3){ %>
+            <% var outerIteration=Math.floor(users.length/3) %>
+
+            <% var j=0 %>
+            <% var length=2 %>
+            <% var remaining=users.length-(outerIteration*3) %>
+
+            <% for(let i=0;i<outerIteration;i++ ) {%>
+
+                <div class="user-row">
+                    <% for(;j<=length;j++) { %>
+                        <div class="user">
+                            <div class="upper">
+                                <img src="./images/user.png" alt="">
+                            </div>
+                            <div class="lower">
+                                <ul>
+                                    <li><a href="#"><%= users[j].email %></a></li>
+                                    <li><a href="#">POSTS (0)</a></li>
+                                    <li><a href="#"><%= users[j].protocol %></a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">option</a></li>
+                                    <li><a href="#">RESTRICT</a></li>
+
+                                    <li class="dlt-user">
+                                        <form action="/delete/<%= users[j].email %>" method="post">
+                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    <% } %>
+                    
                 </div>
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="user-row">
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="user">
-                    <div class="upper">
-                        <img src="./images/user.png" alt="">
-                    </div>
-                    <div class="lower">
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                        </ul>
-                        <ul>
-                            <li><a href="#">option</a></li>
-                            <li><a href="#">option</a></li>
-                            <li class="dlt-user"><a href="#"><i class="fa-solid fa-trash"></i> USER</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
+                <% j=length+1 %>
+                <% length+=3 %>
+            <% } %>
             
+            <% if(remaining>0) {%>
+                <% j=(users.length-remaining) %>
+                <% length=(j+(remaining)) %>
+                <div class="user-row">
+
+                    <% for(;j<length;j++) { %>
+                        <div class="user">
+                            <div class="upper">
+                                <img src="./images/user.png" alt="">
+                            </div>
+                            <div class="lower">
+                                <ul>
+                                    <li><a href="#"><%= users[j].email %></a></li>
+                                    <li><a href="#">POSTS (0)</a></li>
+                                    <li><a href="#"><%= users[j].protocol %></a></li>
+                                </ul>
+                                <ul>
+                                    <li><a href="#">option</a></li>
+                                    <li><a href="#">RESTRICT</a></li>
+
+                                    <li class="dlt-user">
+                                        <form action="/delete/<%= users[j].email %>" method="post">
+                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            <% } %>
+        <% }else if (users.length>0 && users.length <=3) { %>    
+            <div class="user-row">
+
+                <% for(let j=0;j<users.length;j++) { %>
+                    <div class="user">
+                        <div class="upper">
+                            <img src="./images/user.png" alt="">
+                        </div>
+                        <div class="lower">
+                            <ul>
+                                <li><a href="#"><%= users[j].email %></a></li>
+                                <li><a href="#">POSTS (0)</a></li>
+                                <li><a href="#"><%= users[j].protocol %></a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="#">option</a></li>
+                                <li><a href="#">RESTRICT</a></li>
+                                <li class="dlt-user">
+                                    <form action="/delete/<%= users[j].email %>" method="post">
+                                        <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
+                                    </form>
+                                </li>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        <% } %>
            
         </div>
     </section>

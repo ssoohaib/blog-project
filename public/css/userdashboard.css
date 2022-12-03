@@ -46,7 +46,7 @@ body{
     margin: 0;
 }
 
-.user-controls-container>button{
+.user-controls-container>button, .user-controls-container>form>button{
     box-shadow: 0 0 1rem black;
 
     margin: 0 .3rem;
