@@ -82,15 +82,20 @@ form>p{
     justify-content: center;
     align-items: center;
 
-    
+    padding: 2rem 3rem;
+    border-radius: .5rem;
+    box-shadow: 0 0 1rem black;
+    background-color: #444444;
     /* border: .3rem solid black;
     background-color: #e91341;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 0 1rem black;
     color: black; */
 }
+.right-text>h1{
+    font-size: 5rem;
 
+}
 
 
 @media only screen and (max-width: 1000px) {

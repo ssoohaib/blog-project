@@ -1,0 +1,274 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lobster&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Teko:wght@300;400;500;600;700&display=swap');
+body{
+  background-color: #F8F8F8;
+  /* font-family: 'Amiri', serif; */
+  /* font-family: 'Teko', sans-serif; */
+  /* font-family: 'Lobster', cursive; */
+  /* font-family: 'Roboto', sans-serif; */
+  /* font-family: 'Playfair Display', serif; */
+
+
+
+}
+:root{
+    --lightBlack:#444444;
+}
+ul>li{
+  list-style: none;
+}
+
+/* navbar */
+/* .navbar{
+  background-color: #FFFFFF;
+  height: 10vh;
+
+}
+
+.navbar-container{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 2rem;
+  height: 100%;
+} */
+
+/* .nav-logo{ */
+  /* width: 60%; */
+  /* margin: 0 0 1rem 1rem; */
+  /* margin: 0; */
+/* } */
+
+/* .nav-logo>h1{ */
+  /* margin: 0 0 1rem 1rem; */
+
+/* } */
+/* 
+.navbar-container>ul{
+  display: flex;
+  width: 40%;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-container>ul>li{
+  list-style: none;
+  margin: 0 1rem;
+} */
+
+
+
+
+/*mainheading  */
+.main-heading{
+    /* border:1px solid black; */
+  margin-top: 6.5rem;
+  /* background-color: rgb(189, 184, 184); */
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: url(./test4.png); */
+}
+
+.main-heading-container{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.main-heading-container>h1{
+  font-size: 14rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--lightBlack);
+  
+}
+
+.main-heading-container>h1>span{
+  color: #F8F8F8;
+  -webkit-text-stroke: 2px #444444;
+  
+}
+
+.p1{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  color: var(--lightBlack);
+
+}
+
+.p2{
+  /* font-size: 1.2rem; */
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  color: var(--lightBlack);
+
+}
+
+
+/* blog */
+.blog{
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.blog-container{
+  /* width: 80vw; */
+  width: 65vw;
+  /* background-color: red; */
+  height: 100vh;  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.left{
+  /* background-color: yellow; */
+  background: url(../images/redPewdiepie.png);
+  height: 100%;
+  width: 60%;
+}
+
+.right{
+  /* background-color: pink; */
+  /* border: 1px solid #EC2550; */
+  height: 100%;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* text-align: left; */
+}
+
+
+@media only screen and (max-width: 1330px){
+  .blog-container{
+    width: 100vw;
+    /* margin: 0 .5rem; */
+    padding: 0 2rem;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .blog-container{
+    /* width: 100vw; */
+    flex-direction: column;
+    width: 100vw;
+    margin: 0 1rem;
+  }
+
+  .left{
+    width: 90vw;
+  }
+
+  .right{
+    width: 100vw;
+  }
+
+}
+
+
+
+
+.right-content{
+  padding: 2.6rem;
+}
+
+.right>.right-content>ul{   
+    padding: 0;
+    /* margin: 0; */
+  display: flex;
+  /* justify-content: space-between; */
+  /* width: 100%; */
+  /* align-items: center; */
+  /* justify-content: flex-start; */
+  /* justify-content: space-around; */
+}
+
+.right>.right-content>ul>li{
+  /* display: flex; */
+  list-style: none;
+  margin-right: .8rem;
+  /* margin-left: -.2rem; */
+  /* align-items: center; */
+  font-size: .8rem;
+}
+
+.right>.right-content>ul>li>i{
+  margin-right: .6rem;
+  color: #EC2550;
+}
+
+.right>.right-content>a>h1{
+  font-size: 4rem;
+  line-height: 1;
+  color: black;
+  margin-bottom: 1.4rem;
+}
+
+.right>.right-content>a{
+  color: #EC2550;
+  /* text-decoration:; */
+}
+
+.right-content>p{
+  margin-bottom: 1.4rem;
+
+}
+
+
+
+
+/* pagination */
+
+.pagination{
+  /* background-color: grey; */
+  height: 26vh;
+ 
+}
+
+.pagination-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100vw;
+}
+
+.pagination-container>ul{
+  display: flex;
+  /* justify-content: center; */
+}
+
+.pagination-container>ul>li{
+  list-style: none;
+  margin: 0 1rem;
+  /* font-size: 1.1rem; */
+  /* background-color: #EC2550; */
+  height: 2rem;
+  width: 2rem;
+  border-radius: .5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-container>ul>li:hover{
+  background-color: black;
+  color: white;
+}
+
+

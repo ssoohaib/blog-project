@@ -1,0 +1,132 @@
+
+ul>li{
+  list-style: none;
+}
+/* newsletter */
+.newsletter{
+    height: 38vh;
+    background: url(../images/redPewdiepie.png);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 3rem;
+  }
+  
+  .newsletter-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    color: #F9F9F9;
+  
+    background-color: #444444;
+    padding: 2rem 3rem;
+    box-shadow: 0 0 1rem black;
+    border-radius: .5rem;
+  }
+    
+  .newsletter-container>form{
+      /* margin: 0; */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+  }
+  .input-newsletter{
+      display: flex;
+      /* flex-direction: ; */
+      /* width: 60%; */
+      /* margin: 0 !important; */
+  }
+  .input-newsletter>input{
+      /* margin: 0 !important; */
+      height: 2.5rem;
+      /* width: 80rem; */
+      margin: 0 .5rem;
+      border-width: 0 0 1px 0;
+      font-size: .8rem;
+  
+      background-color: #444444;
+      color: white;
+  }
+  .input-newsletter>button{
+      background-color: #444444;
+      /* padding: .3rem .5rem; */
+      height: 2.5rem;
+      border: 1px solid #767676;
+      
+      border-radius: .2rem;
+      color: #767676;
+      /* border: none; */
+  }
+  
+  .input-newsletter>button:hover{
+    background-color: #EC2550;
+    color: white;
+  }
+  
+  
+  
+  /* footer */
+  .footer{
+    height: 40vh;
+  }
+  
+  .footer-container{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+    /* width: 70%; */
+    /* margin: 0 auto; */
+  }
+  
+  .f1-p{
+    /* width: 50%; */
+  }
+  
+  .footer-container>div{
+    /* border: 1px solid #EC2550; */
+    /* width: 33%; */
+    width: auto;
+    /* padding: 2rem; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    /* margin: 0 auto; */
+  }
+  
+  .footer-container>div>h3{
+    width: 100%;
+  }
+  
+  
+  .footer-container>div>ul{
+    padding: 0;
+  }
+  
+  .f1>ul{
+    display: flex;
+  }
+  
+  .footer-container>div>ul>li{
+    margin: .2rem 0;
+  }
+  
+  .footer-container>div>ul>li>i{
+    margin-right: .6rem;
+  }
+  
+  .copyrights{
+    height: 15vh;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .copyrights>p>span{
+    color: #EC2550;
+  }

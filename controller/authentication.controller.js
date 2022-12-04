@@ -19,7 +19,7 @@ conn.connect(err=>{});
 
 exports.delete=(req,res)=>{
 
-    console.log('post -- '+req.params.ext);
+    // console.log('post -- '+req.params.ext);
     let sql="delete from users where email = '"+req.params.ext+"'"
 
     conn.query(sql,(err,result)=>{
@@ -30,17 +30,26 @@ exports.delete=(req,res)=>{
 
 exports.fetch_users=(req,res)=>{
 
-    var sql='select * from users';
+    let sql='select * from users';
     conn.query(sql,(err,result)=>{
         if(err)throw err;
         // console.log(result);
 
         if(req.session.protocol=='admin')
         {
-            res.render('admindashboard',{
-                email:req.session.email,
-                users:result
+
+            let sqll="select * from blogs";
+            conn.query(sqll,(e,rr)=>{
+                if (e)throw e;
+                res.render('admindashboard',{
+                    email:req.session.email,
+                    users:result,
+                    blogs:rr
+                })
+
             })
+
+
         }
     })
 }
@@ -58,6 +67,7 @@ exports.add=async (req,res)=>{
 
         req.session.isAuth=true;
         req.session.email=email;
+        req.session.uname=username;
         
         console.log('(USER) DOC INSERT: SUCCESS');
         res.redirect('/userdashboard');
@@ -71,17 +81,26 @@ exports.find_signin= async(req,res)=>{
         if(err) throw err;
         if(!result.length)return res.redirect("/signin");
         
-        req.session.isAuth=true;
+        // req.session.isAuth=true;
         req.session.email=email;
 
-        if(result[0].protocol=='admin'){
-            req.session.protocol='admin';
-            return res.redirect('/admindashboard');
-        }
-       
-        res.render('signing',{
-            purpose:'signin',
-            enteredCredentials:req.body
+        var sqll="select name from users where email='"+email+"'"
+        conn.query(sqll,(e,rr)=>{
+            if(e)throw e
+            req.session.uname=result[0];
+
+
+            if(result[0].protocol=='admin'){
+                req.session.isAuth=true;
+                req.session.protocol='admin';
+                return res.redirect('/admindashboard');
+            }
+            req.session.protocol='user';
+           
+            res.render('signing',{
+                purpose:'signin',
+                enteredCredentials:req.body
+            })
         })
     })
 }
@@ -104,5 +123,5 @@ exports.signout=(req,res)=>{
     req.session.destroy((err) => {
         if (err) throw err;
         res.redirect("/");
-      });
+    });
 }

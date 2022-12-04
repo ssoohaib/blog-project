@@ -127,7 +127,7 @@ ul>li{
     display: flex;
     justify-content: space-around;
     align-items: flex-start;   
-    margin: 1.5rem 0;
+    margin: 2.5rem 0;
 }
 
 .user{
@@ -143,25 +143,38 @@ ul>li{
 }
 
 .upper{
+    /* padding: 1rem; */
     height: 40%;
     background: url(../images/redPewdiepie.png);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     /* border: 1px solid #EC2550; */
     border-radius: .3rem .3rem 0 0;
+    /* box-shadow: 0 10px 1rem black; */
 
 
 }
-
+.upper>p{
+    background-color: #444444;
+    color: white;
+    border-radius: .3rem;
+    box-shadow: 0 0 .8rem black;
+    padding: .2rem .3rem;
+    margin-top: .4rem;
+}
 .upper>img{
     height: 5rem;
     width: 5rem;
     border-radius: 100%;
-    box-shadow: 0 0 1rem  black;
+    box-shadow: 0 0 .2rem  black;
 
 }
-
+.upper>img,.upper>p{
+    position: relative;
+    top: -1rem;
+}
 .lower{
     display: flex;
     align-items: center;
@@ -173,20 +186,29 @@ ul>li{
 .lower>ul{
     padding: 0;
     margin: 0;
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 50%;
 }
 
 .lower>ul>li{
+
+    margin: .2rem 0;
+    height: 30%;
     background-color: #E2E6EA;
     padding: .4rem;
-    margin: .4rem 0;
-    width: 6rem;
+    border: 1px solid  #cfd0d3;
+    width: 90%;
     border-radius: .4rem;
     display: flex;
     align-items: center;
     justify-content: center;
 
     font-size: .9rem;
-    overflow: hidden;
 }
 
 

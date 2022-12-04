@@ -71,6 +71,7 @@ body{
 
 .list{
     /* height: 100vh; */
+    margin-bottom: 4rem;
 }
 
 
@@ -85,10 +86,11 @@ body{
 .list-header{
     /* background-color: #78909C; */
     display: flex;
-    /* width: 80%; */
+    /* min-width: 50%; */
     justify-content: space-between;
     margin: 2rem 0 3rem 0;
     border-bottom: 1px solid black;
+    /* width: 80%; */
 }
 
 .list-header>h3{
@@ -136,15 +138,19 @@ body{
     /* cursor: pointer; */
 }
 
-h1{
+.list-item>h1{
     border: 1px solid #78909C;
-    height: 10vh;
-    width: 10vh;
+    /* height: 10vh;
+    width: 10vh; */
+    height: 4.2rem;
+    width: 4.4rem;
     border-radius: .5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 0 0 0 1rem;  
+    /* font-size: 2.5rem; */
+    /* padding: 1rem 1.5rem; */
     /* background: url(./test4.png); */
 }
 
@@ -156,7 +162,16 @@ ul>li{
     list-style: none;
     font-size: .8rem;
     margin: .05rem;
+    /* display: flex;
+    justify-content: flex-start;
+    align-items: center; */
 }
+/* li>form{
+    margin: 0;
+    padding: 0;
+    background-color: red;
+} */
+
 
 ul>li>i{
     margin-right: .8rem;
@@ -171,13 +186,29 @@ ul>li>i{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
     /* align-items:; */
     /* height: 100%; */
     margin: 0 1rem;
 }
 
 .btn-blog-delete{
+    display: flex;
     color: red;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-blog-delete>form>button{
+    border: none;
+    background-color: white;
+}
+
+
+li>a{
+    margin: 0;
+    text-decoration: none;
+    color: #78909C;
 }
 
 @media only screen and (max-width: 560px){

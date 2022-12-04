@@ -1,0 +1,42 @@
+
+    <header class="">
+        <div class="navbar-container">
+            <h1><a href="/">AXOLE</a></h1>
+            <ul>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">CONTACT</a></li>
+                <li><a href="/signin">ACCOUNT</a></li>
+            </ul>
+        </div>
+    </header>
+    <script>
+        const body = document.body;
+        let lastScroll = 0;
+
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                body.classList.remove("scroll-up");
+                return;
+            }
+
+            if (currentScroll > lastScroll && !body.classList.contains("scroll-down")) {
+                body.classList.remove("scroll-up");
+                body.classList.add("scroll-down");
+            } else if (
+                currentScroll < lastScroll &&
+                body.classList.contains("scroll-down")
+            ) {
+                body.classList.remove("scroll-down");
+                body.classList.add("scroll-up");
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+    <script src="https://kit.fontawesome.com/9c1c3f6a2e.js" crossorigin="anonymous"></script>
+
+
+
+
+
+    

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    
+    
+
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/home.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <%- include('partials/navbar') %>
+
+    <section class="main-heading">
+        <div class="main-heading-container">
+            <p class="p1">A PERSONAL BLOG</p>
+            <h1>A<span>XOL</span>E.</h1>
+            <p class="p2">WRITE THE FUCK OUTTA&nbsp;<span style="text-decoration: underline; font-weight: 500;">YE HEART.</span></p>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="blog">
+
+        <% for(let i=0;i<blogs.length;i++){ %>
+            <div class="blog-container">
+                <% if(!(i%2)){ %>
+                    <div class="left"></div>
+                <% } %>
+
+
+                <div class="right">
+                    <div class="right-content">
+                        <ul>
+                            <li><i class="fa-solid fa-user"></i>JOE JONES</li>
+                            <li><i class="fa-solid fa-caret-right"></i><%= blogs[i].category %></li>
+                            <li><i class="fa-solid fa-calendar"></i><%= blogs[i].date %></li>
+                            <li><i class="fa-solid fa-comment"></i>0</li>
+                        </ul>
+                        <a href="/blog/<%= blogs[i].bid %>"><h1><%= blogs[i].title %></h1></a>
+
+                        <p class="desc">
+                            
+                        </p>
+                        
+                        <p class="sec-p-for-dis" style="display: none;">
+                            <%= blogs[i].quill %>
+                        </p>
+
+
+                        <a href="/blog/<%= blogs[i].bid %>">LEARN MORE <i class="fa-solid fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <% if(i%2){ %>
+                    <div class="left"></div>
+                <% } %>
+            </div>
+
+
+        <% } %>
+        
+    </section>
+
+
+            <script>
+                // console.log('-');
+                for(let i=0;i<<%= blogs.length %>;i++){
+                    let secP=document.getElementsByClassName('sec-p-for-dis')[i].innerText;
+                    document.getElementsByClassName('desc')[i].innerHTML=secP.slice(0,Math.floor(((secP.length)/100)*30));
+
+
+                    // document.getElementsByClassName('desc')[i].innerHTML=secP.slice(0,200);
+
+                }
+            </script>
+
+    
+
+
+
+
+
+    <section class="pagination">
+        <div class="pagination-container">
+            <ul>
+                <li><i class="fa-solid fa-arrow-left"></i></li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li><i class="fa-solid fa-arrow-right"></i></li>
+            </ul>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+    <%- include('partials/footer') %>
+
+
+    <script src="https://kit.fontawesome.com/9c1c3f6a2e.js" crossorigin="anonymous"></script>
+</body>
+</html>

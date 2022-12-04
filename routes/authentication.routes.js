@@ -22,10 +22,15 @@ router.post('/signin',user.find_signin);
 router.post('/signin/verified',(req,res)=>{
     if(req.body.twoFactorCode==123){
         req.session.isAuth=true;
+        console.log('ioioioio');
         res.redirect('/userdashboard')
     }
 
-    res.redirect('/signin')
+        // req.session.destroy((err) => {
+        //     if (err) throw err;
+        //     res.redirect('/signin')
+        // });
+
 })
 
 
@@ -44,30 +49,7 @@ router.get('/signup',(req,res)=>{
 router.post('/signup',user.find_signup);
 router.post('/signup/verified',user.add);
 
-
-// router.get('/userdashboard',isAuth,(req,res)=>{
-//     if(req.session.protocol=='admin')
-//     {
-//         console.log('----'+req.session.protocol);
-//         res.redirect('/admindashboard')
-//     }
-//     res.render('userDashboard',{email:req.session.email})
-// })
-
-
-// router.get('/admindashboard',isAuth,(req,res)=>{
-//     if(req.session.protocol=='admin')
-//     {
-
-//         res.render('admindashboard',{email:req.session.email})
-//     }
-
-
-//     // res.render('userDashboard',{email:req.session.email})
-// })
-
 router.get('/admindashboard',isAuth,user.fetch_users);
-
 router.post('/signout',user.signout);
 
 module.exports=router;
