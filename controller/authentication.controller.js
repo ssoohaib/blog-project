@@ -1,25 +1,18 @@
 const mysql=require('mysql')
 const timestamp = require('time-stamp');
+require('dotenv').config()
 
-// var conn = mysql.createConnection({
-//     host     : 'sql6.freemysqlhosting.net',
-//     user     : 'sql6582207',
-//     password : 'UENh22yBdU',
-//     database : 'sql6582207' 
-// });
-   
 var conn = mysql.createConnection({
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : '',
-    database : 'blogDB'
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME
 });
 
 conn.connect(err=>{});
 
 exports.delete=(req,res)=>{
 
-    // console.log('post -- '+req.params.ext);
     let sql="delete from users where email = '"+req.params.ext+"'"
 
     conn.query(sql,(err,result)=>{
@@ -33,7 +26,6 @@ exports.fetch_users=(req,res)=>{
     let sql='select * from users';
     conn.query(sql,(err,result)=>{
         if(err)throw err;
-        // console.log(result);
 
         if(req.session.protocol=='admin')
         {
@@ -48,8 +40,6 @@ exports.fetch_users=(req,res)=>{
                 })
 
             })
-
-
         }
     })
 }

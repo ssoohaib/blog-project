@@ -1,18 +1,13 @@
 const mysql=require('mysql')
 const timestamp = require('time-stamp');
 const path=require('path')
+require('dotenv').config()
 
-// var conn = mysql.createConnection({
-//     host     : 'sql6.freemysqlhosting.net',
-//     user     : 'sql6582207',
-//     password : 'UENh22yBdU',
-//     database : 'sql6582207'
-// });
 var conn = mysql.createConnection({
-    host     : '127.0.0.1',
-    user     : 'root',
-    password : '',
-    database : 'blogDB'
+    host     : process.env.DB_HOSTNAME,
+    user     : process.env.DB_USER,
+    password : process.env.DB_PASSWORD,
+    database : process.env.DB_NAME
 });
    
 conn.connect(err=>{});
@@ -45,8 +40,6 @@ exports.edit=(req,res)=>{
         console.log('(BLOG) DOC UPDATE: SUCCESS');
         res.redirect('/userdashboard')
     })
-
-
 }
 
 exports.findEdit=(req,res)=>{
@@ -117,8 +110,6 @@ exports.add=(req,res)=>{
     let originalname=''+Date.now()+path.extname(req.file.originalname);
     let bid=Math.floor(Math.random() * 1000000000);
 
-    // console.log(req.session.uname.name);
-    // res.redirect('/compose')
     var sql="insert into blogs (bid,uid,uname,title,category,date,coverImg,likes,comments,quill) values ('"+bid+"','"+req.session.email+"','"+ req.session.uname.name+"','"+title+"','"+category+"','"+timestamp('DD-MM-YYYY')+"','"+originalname+"','0','0','"+quill+"')";
 
     conn.query(sql,(err,result)=>{
