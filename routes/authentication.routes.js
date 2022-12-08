@@ -20,18 +20,18 @@ router.get('/signin',(req,res)=>{
 router.post('/signin',user.find_signin);
 
 router.post('/signin/verified',(req,res)=>{
-    // if(req.body.twoFactorCode==req.session.code){
-
-
-    //     req.session.isAuth=true;
-    //     res.redirect('/userdashboard')
-    // }
-    if(req.body.twoFactorCode==123){
+    if(req.body.twoFactorCode==req.session.code){
 
 
         req.session.isAuth=true;
         res.redirect('/userdashboard')
     }
+    // if(req.body.twoFactorCode==123){
+
+
+    //     req.session.isAuth=true;
+    //     res.redirect('/userdashboard')
+    // }
 
         // req.session.destroy((err) => {
         //     if (err) throw err;

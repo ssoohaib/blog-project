@@ -93,8 +93,8 @@ exports.fetch_users=(req,res)=>{
 exports.add=async (req,res)=>{
 
     let {username,email,password}=JSON.parse(req.body.buffer);
-    // if(req.body.twoFactorCode!=req.session.code){return res.redirect('/signup')}
-    if(req.body.twoFactorCode!=123){return res.redirect('/signup')}
+    if(req.body.twoFactorCode!=req.session.code){return res.redirect('/signup')}
+    // if(req.body.twoFactorCode!=123){return res.redirect('/signup')}
 
     var profileImg='-';
     var sql="insert into users (name,email,password,profileimg,protocol,date) values ('"+username+"','"+email+"','"+password+"','"+profileImg+"','user','"+timestamp('DD-MM-YYYY  HH:mm:ss')+"')";
