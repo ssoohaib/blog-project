@@ -45,7 +45,7 @@ ul>li{
     margin: 0;
 }
 
-.user-controls-container>button, .user-controls-container>form>button{
+.user-controls-container>button,.user-controls-container>a, .user-controls-container>form>button{
     box-shadow: 0 0 1rem black;
 
     margin: 0 .3rem;
@@ -272,4 +272,10 @@ ul>li{
         width: 40vh;
 
     }
+}
+
+form>select{
+    /* background-color: red; */
+    border: none;
+    background-color: #E2E6EA;
 }

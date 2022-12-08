@@ -20,9 +20,10 @@ router.get('/signin',(req,res)=>{
 router.post('/signin',user.find_signin);
 
 router.post('/signin/verified',(req,res)=>{
-    if(req.body.twoFactorCode==123){
+    if(req.body.twoFactorCode==req.session.code){
+
+
         req.session.isAuth=true;
-        console.log('ioioioio');
         res.redirect('/userdashboard')
     }
 
@@ -51,5 +52,6 @@ router.post('/signup/verified',user.add);
 
 router.get('/admindashboard',isAuth,user.fetch_users);
 router.post('/signout',user.signout);
+router.get('/signout',user.signout);
 
 module.exports=router;

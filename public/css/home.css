@@ -138,14 +138,14 @@ ul>li{
   /* background-color: yellow; */
   background: url(../images/redPewdiepie.png);
   height: 100%;
-  width: 60%;
+  width: 50%;
 }
 
 .right{
   /* background-color: pink; */
   /* border: 1px solid #EC2550; */
   height: 100%;
-  width: 40%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;

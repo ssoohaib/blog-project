@@ -46,7 +46,7 @@ body{
     margin: 0;
 }
 
-.user-controls-container>button, .user-controls-container>form>button{
+.user-controls-container>button,.user-controls-container>a, .user-controls-container>form>button{
     box-shadow: 0 0 1rem black;
 
     margin: 0 .3rem;
@@ -224,7 +224,7 @@ li>a{
         margin-bottom: 1rem;
     }
 
-    .user-controls-container>button{
+    .user-controls-container>button, .user-controls-container>a{
         font-size: .8rem;
         /* font-weight: 0; */
         width: 7rem;

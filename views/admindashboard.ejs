@@ -28,7 +28,10 @@
             </div>
             
             <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-house"></i></button>
-            <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-gear"></i></button>
+            
+            <a href="/details/change/<%= email %>" type="submit" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-gear"></i></a>
+            
+
             <button type="button" class="btn btn-light btn-lg btn-1"><i class="fa-solid fa-trash"></i></button>
 
             <form action="/signout" method="post">
@@ -48,7 +51,6 @@
         </div>
 
         <div class="users-container">
-    <% console.log('-----------------'+blogs.length) %>
 
         <% if(users.length>3){ %>
             <% var outerIteration=Math.floor(users.length/3) %>
@@ -70,18 +72,25 @@
                             </div>
                             <div class="lower">
                                 <ul>
-                                    <li><a href="#"><%= users[j].name %></a></li>
-
+                                    <li>
+                                        <a href="/details/<%= users[j].email %>"><%= users[j].name %></a>
+                                    </li>
                                     <li><a href="/userdashboard/<%= users[j].email %>">POSTS</a></li>
                                     
                                 </ul>
                                 <ul>
-                                    <!-- <li><a href="#"><%= users[j].protocol %></a></li> -->
-                                    <li><a href="#">RESTRICT</a></li>
+                                    <li>
+                                        <form action="/protocol/<%= users[j].email %>" method="post">
+                                            <select name="cars" id="cars" onchange="this.form.submit()">
+                                                <option value="USER" name="user">USER</option>
+                                                <option value="ADMIN" name="admin">ADMIN</option>
+                                            </select>
+                                        </form>
+                                    </li>
 
                                     <li class="dlt-user">
                                         <form action="/delete/<%= users[j].email %>" method="post">
-                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
+                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> DELETE</button>
                                         </form>
                                     </li>
 
@@ -104,28 +113,41 @@
                 <div class="user-row">
 
                     <% for(;j<length;j++) { %>
-                        <div class="user">
-                            <div class="upper">
-                                <img src="./images/user.png" alt="">
+                        <% if(users[j].protocol!='admin'){ %>
+                            <div class="user">
+                                <div class="upper">
+                                    <img src="/images/user.png" alt="">
+                                    <p><%= users[j].email %></p>
+                                </div>
+                                <div class="lower">
+                                    <ul>
+                                        <li>
+                                            <a href="/details/<%= users[j].email %>"><%= users[j].name %></a>
+                                        </li>
+    
+                                        <li><a href="/userdashboard/<%= users[j].email %>">POSTS</a></li>
+                                        
+                                    </ul>
+                                    <ul>
+                                        <li>
+                                            <form action="/protocol/<%= users[j].email %>" method="post">
+                                                <select name="cars" id="cars" onchange="this.form.submit()">
+                                                    <option value="USER" name="user">USER</option>
+                                                    <option value="ADMIN" name="admin">ADMIN</option>
+                                                </select>
+                                            </form>
+                                        </li>
+    
+                                        <li class="dlt-user">
+                                            <form action="/delete/<%= users[j].email %>" method="post">
+                                                <button type="submit" href="#"><i class="fa-solid fa-trash"></i> DELETE</button>
+                                            </form>
+                                        </li>
+    
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="lower">
-                                <ul>
-                                    <li><a href="#"><%= users[j].email %></a></li>
-                                    <li><a href="#">POSTS (0)</a></li>
-                                    <li><a href="#"><%= users[j].protocol %></a></li>
-                                </ul>
-                                <ul>
-                                    <li><a href="#">option</a></li>
-                                    <li><a href="#">RESTRICT</a></li>
-
-                                    <li class="dlt-user">
-                                        <form action="/delete/<%= users[j].email %>" method="post">
-                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
-                                        </form>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                            <% } %>
                     <% } %>
                 </div>
             <% } %>
@@ -133,26 +155,46 @@
             <div class="user-row">
 
                 <% for(let j=0;j<users.length;j++) { %>
-                    <div class="user">
-                        <div class="upper">
-                            <img src="./images/user.png" alt="">
+                    <% if(users[j].protocol!='admin'){ %>
+                        <div class="user">
+                            <div class="upper">
+                                <img src="/images/user.png" alt="">
+                                <p><%= users[j].email %></p>
+                            </div>
+                            <div class="lower">
+                                <ul>
+                                    <li>
+                                        <a href="/details/<%= users[j].email %>"><%= users[j].name %></a>
+                                    </li>
+                                    
+                                <!-- <li>
+                                    <button class="details-btn" href="google.com" style="background-color: #E2E6EA; border: none;"><%= users[j].name %></button>
+                                </li> -->
+                               
+
+                                    <li><a href="/userdashboard/<%= users[j].email %>">POSTS</a></li>
+                                    
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <form action="/protocol/<%= users[j].email %>" method="post">
+                                            <select name="cars" id="cars" onchange="this.form.submit()">
+                                                <option value="USER" name="user">USER</option>
+                                                <option value="ADMIN" name="admin">ADMIN</option>
+                                            </select>
+                                        </form>
+                                    </li>
+
+                                    <li class="dlt-user">
+                                        <form action="/delete/<%= users[j].email %>" method="post">
+                                            <button type="submit" href="#"><i class="fa-solid fa-trash"></i> DELETE</button>
+                                        </form>
+                                    </li>
+
+                                </ul>
+                            </div>
                         </div>
-                        <div class="lower">
-                            <ul>
-                                <li><a href="#"><%= users[j].email %></a></li>
-                                <li><a href="#">POSTS (0)</a></li>
-                                <li><a href="#"><%= users[j].protocol %></a></li>
-                            </ul>
-                            <ul>
-                                <li><a href="#">option</a></li>
-                                <li><a href="#">RESTRICT</a></li>
-                                <li class="dlt-user">
-                                    <form action="/delete/<%= users[j].email %>" method="post">
-                                        <button type="submit" href="#"><i class="fa-solid fa-trash"></i> USER</button>
-                                    </form>
-                                </li>
-                        </div>
-                    </div>
+                        <% } %>
                 <% } %>
             </div>
         <% } %>
@@ -160,6 +202,7 @@
         </div>
     </section>
 
+    
 
 
 

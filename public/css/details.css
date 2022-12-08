@@ -1,0 +1,46 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.details{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(../images/redPewdiepie.png);
+}
+.details-container{
+    height: auto;
+    background-color: white;
+    padding: 6rem 8rem;
+    border-radius: 1rem;
+    box-shadow: 0 0 2rem black;
+}
+.details-container>h3{
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    background-color: #444444;
+    padding: 1rem 1.4rem;
+    border-radius: .5rem;
+    color: white;
+}
+.details-container>form{
+    display: flex;
+    flex-direction: column;
+}
+.details-container>form>input{
+    background-color: white;
+    border-width: 0 0 1px 0;
+    margin: 1rem 0;
+    height: 2rem;
+    font-size: 1.2rem;
+}
+.details-container>form>button{
+    padding: .6rem .8rem;
+    border-radius: .5rem;
+    border: none;
+    margin: 1rem 0;
+    font-size: 1rem;
+
+}

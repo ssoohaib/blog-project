@@ -37,13 +37,71 @@
 
 
     <section class="blog">
+        <div class="voting">
+
+
+            <% if(voted){ %>
+                <form id="form1" action="/removeupvote/<%= blog[0].bid %>" method="post" >
+                    <button type="submit" id="up-btn"><i class="fa-solid fa-up-long" style="color: #EC2550;"></i></button>
+                </form>
+            <% } else {%>
+                <form id="form1" action="/upvote/<%= blog[0].bid %>" method="post" >
+                    <button type="submit" id="up-btn"><i class="fa-solid fa-up-long"></i></button>
+                </form>
+            <% } %>
+
+
+            <p ><%= blog[0].likes %></p>
+            
+            <% if(downvoted){ %>
+                <form id="form2" action="/removedownvote/<%= blog[0].bid %>" method="post">
+                    <button type="submit" id="dn-btn"><i class="fa-solid fa-down-long" style="color: #EC2550;"></i></button>
+                </form>
+            <% }else{ %>
+                <form id="form2" action="/downvote/<%= blog[0].bid %>" method="post">
+                    <button type="submit" id="dn-btn"><i class="fa-solid fa-down-long"></i></button>
+                </form>
+            <% } %>
+
+            
+           
+        </div>
+        
         <div id="bl-cn" class="blog-container">
             <div class="heading">
+                <p style="margin: 0; color:gray; font-size: .8rem; padding: 0;"><%= blog[0].uname %>&nbsp;|&nbsp;<%= blog[0].date %></p>
                 <h1><%= blog[0].title %></h1>
             </div>
         </div>
 
         <input id="bl-in" type="text" value="<%= blog[0].quill %>" hidden>
+
+
+
+        <div class="discussion">
+            
+            <div class="discussion-container">
+              
+      
+              <div class="upper">
+                <ul id="messages">
+                    <li style="background-color: #EC2550; color: white; font-weight: bold; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                        START A LIVE DISCUSSION
+                        <br>
+                        <p id="live-counter">LIVE&nbsp;(<span id="counter" style="font-size: .8rem;">0</span>)</p>
+                    </li>
+                </ul>
+              </div>
+              <div class="lower">
+                <form id="form" action="">
+                  <input id="input" placeholder="TEXT" autocomplete="off" />
+                  <button><i class="fa-regular fa-paper-plane"></i></button>
+                </form>
+              </div>
+      
+            </div>
+        </div>
+
     </section>
     <div class="border-line-parent">
 
@@ -60,100 +118,53 @@
 
 
 
-    <section class="comments">
-        <div class="comments-container">
-            <h3>6 COMMENTS</h3>
+<section class="comments">
+    <div class="comments-container">
+        <h3><%= comments.length %> COMMENTS</h3>
+        
+        <% for(let i=0; i<comments.length;i++){ %>
             <div class="comment">
-                <img src="./user.png" alt="">
+                <img src="/images/user.png" alt="">
 
                 <div class="comment-detail">
-                    <p class="c-name">John Doe</p>
-                    <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                    <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <button>REPLY</button>
+                    <p class="c-name"><%= comments[i].uname %></p>
+                    <p class="c-date"><%= comments[i].date %></p>
+                    <p class="c-p"><%= comments[i].comment %></p>
+                        <button id="reply-btn">REPLY</button>
+                    
 
-
-                    <div class="comment">
-                        <img src="/images/user.png" alt="">
+                    <div id="reply-container" class="add-a-comment add-a-reply" style="display: none;">
+                        <form action="/comm/reply/<%= comments[i].uname %>" method="post">
+                            <input type="text" name="comment" placeholder="ADD A REPLY">
+                            <button type="submit">REPLY</button> 
         
-                        <div class="comment-detail">
-                            <p class="c-name">John Doe</p>
-                            <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                            <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <button>REPLY</button>
-
-
-                            <div class="comment">
-                                <img src="./user.png" alt="">
-                
-                                <div class="comment-detail">
-                                    <p class="c-name">John Doe</p>
-                                    <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                                    <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                                    <button>REPLY</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="comment">
-                        <img src="./user.png" alt="">
-        
-                        <div class="comment-detail">
-                            <p class="c-name">John Doe</p>
-                            <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                            <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <button>REPLY</button>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="comment">
-                <img src="./user.png" alt="">
-
-                <div class="comment-detail">
-                    <p class="c-name">John Doe</p>
-                    <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                    <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <button>REPLY</button>
-                </div>
-            </div>
-
-            <div class="comment">
-                <img src="./user.png" alt="">
-
-                <div class="comment-detail">
-                    <p class="c-name">John Doe</p>
-                    <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                    <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <button>REPLY</button>
-
-                    <div class="comment">
-                        <img src="./user.png" alt="">
-        
-                        <div class="comment-detail">
-                            <p class="c-name">John Doe</p>
-                            <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                            <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                            <button>REPLY</button>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
+        <% } %>
 
-            <div class="comment">
-                <img src="./user.png" alt="">
 
-                <div class="comment-detail">
-                    <p class="c-name">John Doe</p>
-                    <p class="c-date">JANUARY 31, 2021 AT 10:20AM</p>
-                    <p class="c-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <button>REPLY</button>
-                </div>
+
+        
+            <div class="add-a-comment">
+                <form action="/comm/<%= blog[0].bid %>" method="post">
+                    <input type="text" name="comment" placeholder="ADD A COMMENT" >
+                    <button type="submit" >POST</button> 
+                </form>
             </div>
-        </div>
-    </section>
+        
+
+        
+    </div>
+</section>
+
+
+<script>
+    document.getElementById('reply-btn').addEventListener('click',()=>{
+        document.getElementById('reply-container').style.display='';
+    })
+</script>
 
 
 
@@ -161,5 +172,35 @@
 
 
     <script src="https://kit.fontawesome.com/9c1c3f6a2e.js" crossorigin="anonymous"></script>
+    
+    
+    <script src="/socket.io/socket.io.js"></script>
+   <script>
+
+        var socket = io();
+
+        var messages = document.getElementById('messages');
+        var form = document.getElementById('form');
+        var input = document.getElementById('input');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            if (input.value) {
+                socket.emit('chat message', input.value);
+                input.value = '';
+            }
+        });
+
+
+        socket.on('live-counter',function(count){
+            document.getElementById('counter').innerText=--count;
+        })
+
+        socket.on('chat message', function(msg) {
+            var item = document.createElement('li');
+            item.textContent = msg;
+            messages.appendChild(item);
+        });
+    </script>
 </body>
 </html>

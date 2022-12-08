@@ -33,7 +33,7 @@ exports.edit=(req,res)=>{
 
     let {bid,title,category,quill}=req.body;
     let originalname=''+Date.now()+path.extname(req.file.originalname);
-    let sql="update blogs set title='"+title+"', category='"+category+"',date='"+timestamp('DD-MM-YYYY  HH:mm:ss')+"', coverImg='"+originalname+"', quill='"+quill+"' where bid='"+req.params.ext+"'";
+    let sql="update blogs set title='"+title+"', category='"+category+"',date='"+timestamp('DD-MM-YYYY')+"', coverImg='"+originalname+"', quill='"+quill+"' where bid='"+req.params.ext+"'";
     // console.log(sql);
     conn.query(sql,(err,result)=>{
         if(err)throw err;
@@ -67,33 +67,86 @@ exports.delete=(req,res)=>{
 
 exports.getBlog=(req,res)=>{
 
-    let sql="select * from blogs where bid='"+req.params.ext+"'";
+    let bid=req.params.ext;
+    let sql="select * from blogs where bid='"+bid+"'";
     conn.query(sql,(err,result)=>{
         if(err)throw err;
         if(result.length){}
+
+        let sqll="select * from comments where bid='"+bid+"'"
+        conn.query(sqll,(e,comments)=>{
+            if(e)throw e
+
+
+
+            if(req.session.isAuth){
+                // console.log('==============='+req.session.email);
+                let sqlll="select * from upvotes where uid='"+req.session.email+"' and bid='"+bid+"'"
+                conn.query(sqlll,(ee,ll)=>{
+                    if(ee)throw ee
+
+                    if(ll.length){
+                        // console.log('before');
+                        res.render('blog',{
+                            isAuth:req.session.isAuth,
+                            voted:true,
+                            downvoted:false,
+                            comments:comments,
+                            blog:result
+                        })
+                    }else{
+
+                        let sqllll="select * from downvotes where uid='"+req.session.email+"' and bid='"+bid+"'"
+                        conn.query(sqllll,(eee,dd)=>{
+                            if(eee)throw eee
+                            if(dd.length){
+                                res.render('blog',{
+                                    isAuth:req.session.isAuth,
+                                    voted:false,
+                                    downvoted:true,
+                                    comments:comments,
+                                    blog:result
+                                })
+                            }else{
+                                res.render('blog',{
+                                    isAuth:req.session.isAuth,
+                                    voted:false,
+                                    downvoted:false,
+                                    comments:comments,
+                                    blog:result
+                                })
+                            }
+                        })
         
-        res.render('blog',{
-            blog:result
+                    }
+                })
+            }else{
+                // console.log('after');
+                res.render('blog',{
+                    isAuth:req.session.isAuth,
+                    voted:false,
+                    downvoted:false,
+                    comments:comments,
+                    blog:result
+                })
+
+            }
         })
+        
     })
 }
 
 exports.blogs=(req,res)=>{
     let sql='';
-    console.log('poppppppppppppp');
-
     if(req.params.ext && req.session.protocol=='admin'){
         sql="select * from blogs where uid = '"+req.params.ext+"'";
     }else{
         if(req.session.protocol=='admin')return res.redirect('/admindashboard')
         sql="select * from blogs where uid = '"+req.session.email+"'";
     }
-        // console.log(req.params.ext);
-    
-    console.log('poppppppppppppp');
     conn.query(sql,(err,result)=>{
         if(err)throw err;
-        // console.log(result);
+        
         res.render('userDashboard',{
             email:req.session.email,
             prot:req.session.protocol,
