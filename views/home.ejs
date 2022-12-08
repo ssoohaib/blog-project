@@ -75,14 +75,17 @@
         <% for(let i=0;i<blogs.length;i++){ %>
             <div class="blog-container">
                 <% if(!(i%2)){ %>
-                    <div class="left" style="background: url(/images/<%= blogs[i].coverImg %>);"></div>
+                    <div class="left" style="background: url(/uploads/<%= blogs[i].coverImg %>);">
+
+                    </div>
+                   
                 <% } %>
 
 
                 <div class="right">
                     <div class="right-content">
                         <ul>
-                            <li><i class="fa-solid fa-user"></i>JOE JONES</li>
+                            <li><i class="fa-solid fa-user"></i><%= blogs[i].uname %></li>
                             <li><i class="fa-solid fa-caret-right"></i><%= blogs[i].category %></li>
                             <li><i class="fa-solid fa-calendar"></i><%= blogs[i].date %></li>
                             <li><i class="fa-solid fa-comment"></i>0</li>
@@ -103,7 +106,8 @@
                 </div>
 
                 <% if(i%2){ %>
-                    <div class="left" style="background: url(/images/<%= blogs[i].coverImg %>);"></div>
+                    <div class="left" style="background: url(/uploads/<%= blogs[i].coverImg %>);"></div>
+                    
 
                 <% } %>
             </div>

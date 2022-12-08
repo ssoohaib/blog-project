@@ -62,7 +62,6 @@ const commentRoutes=require('./routes/comments.routes');
 const newsletter=require('./routes/newsletter.route')
 
 
-
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));

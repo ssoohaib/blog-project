@@ -57,7 +57,8 @@ exports.get_blogs_all=(req,res)=>{
 exports.edit=(req,res)=>{
 
     let {bid,title,category,quill}=req.body;
-    let originalname=''+Date.now()+path.extname(req.file.originalname);
+    // let originalname=''+Date.now()+path.extname(req.file.originalname);
+    let originalname=req.file.filename;
     let sql="update blogs set title='"+title+"', category='"+category+"',date='"+timestamp('DD-MM-YYYY')+"', coverImg='"+originalname+"', quill='"+quill+"' where bid='"+req.params.ext+"'";
     // console.log(sql);
     conn.query(sql,(err,result)=>{
@@ -185,7 +186,8 @@ exports.blogs=(req,res)=>{
 exports.add=(req,res)=>{
 
     let {category,title,quill}=req.body;
-    let originalname=''+Date.now()+path.extname(req.file.originalname);
+    // let originalname=''+Date.now()+path.extname(req.file.originalname);
+    let originalname=req.file.filename;
     let bid=Math.floor(Math.random() * 1000000000);
 
     var sql="insert into blogs (bid,uid,uname,title,category,date,coverImg,likes,comments,quill) values ('"+bid+"','"+req.session.email+"','"+ req.session.uname.name+"','"+title+"','"+category+"','"+timestamp('DD-MM-YYYY')+"','"+originalname+"','0','0','"+quill+"')";
