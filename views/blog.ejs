@@ -63,6 +63,10 @@
                 </form>
             <% } %>
 
+           <form action="/pdf" method="post" style="margin-top: 2rem;">
+                <input type="text" name="pdfurl" hidden value="blog/<%= blog[0].bid %>" >
+                <button type="submit"><i class="fa-solid fa-file-pdf"></i></button>
+           </form>
             
            
         </div>
@@ -130,21 +134,30 @@
                     <p class="c-name"><%= comments[i].uname %></p>
                     <p class="c-date"><%= comments[i].date %></p>
                     <p class="c-p"><%= comments[i].comment %></p>
-                        <button id="reply-btn">REPLY</button>
+                        <button class="reply-btn">REPLY</button>
                     
 
                     <div id="reply-container" class="add-a-comment add-a-reply" style="display: none;">
-                        <form action="/comm/reply/<%= comments[i].uname %>" method="post">
+                        <form action="/comm/<%= blog[0].bid %>" method="post">
                             <input type="text" name="comment" placeholder="ADD A REPLY">
                             <button type="submit">REPLY</button> 
         
                         </form>
                     </div>
+
+
                 </div>
             </div>
         <% } %>
 
-
+        <script>
+            for(let l=0;l<<%= comments.length %>;l++){
+                
+                document.getElementsByClassName('reply-btn')[l].addEventListener('click',()=>{
+                    document.getElementsByClassName('add-a-reply')[l].style.display='';
+                })
+            }
+        </script>
 
         
             <div class="add-a-comment">
@@ -160,11 +173,7 @@
 </section>
 
 
-<script>
-    document.getElementById('reply-btn').addEventListener('click',()=>{
-        document.getElementById('reply-container').style.display='';
-    })
-</script>
+
 
 
 
@@ -193,7 +202,7 @@
 
 
         socket.on('live-counter',function(count){
-            document.getElementById('counter').innerText=--count;
+            document.getElementById('counter').innerText=count-2;
         })
 
         socket.on('chat message', function(msg) {

@@ -39,12 +39,12 @@ module.exports=(reciever,code,template,subject)=>{
         context: {
             code:code
         }
-        // ,
-        // attachments: [{
-        //     filename: 'result.pdf',
-        //     path: __dirname+'/result.pdf',
-        //     contentType: 'application/pdf'
-        // }]
+        ,
+        attachments: [{
+            filename: 'result.pdf',
+            path: __dirname+'/result.pdf',
+            contentType: 'application/pdf'
+        }]
     };
     // console.log('pop--'+reciever);
     transporter.sendMail(mailOptions, function(err, data) {

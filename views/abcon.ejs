@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Lobster&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Teko:wght@300;400;500;600;700&display=swap');
+
+        body{
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+        .info{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #F8F8F8;
+            /* background: url(/images/redPewdiepie.png); */
+        }
+        .info-container{
+            background-color: #444444;
+            color: white;
+            padding: 2rem;
+            border-radius: .5rem;
+            box-shadow: 0 0 1rem black;
+            font-size: 2rem;
+            text-align: center;
+        }
+        /*mainheading  */
+.main-heading{
+    /* border:1px solid black; */
+  margin-top: 6.5rem;
+  /* background-color: rgb(189, 184, 184); */
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: url(./test4.png); */
+}
+
+.main-heading-container{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.main-heading-container>h1{
+  font-size: 14rem;
+  font-weight: 800;
+  margin: 0;
+  color: var(--lightBlack);
+  color: #444444;
+  
+}
+
+.main-heading-container>h1>span{
+  color: #F8F8F8;
+  -webkit-text-stroke: 2px #444444;
+  
+}
+
+.p1{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+  color: var(--lightBlack);
+
+}
+
+.p2{
+  /* font-size: 1.2rem; */
+  /* width: 100%; */
+  display: flex;
+  justify-content: flex-end;
+  color: var(--lightBlack);
+
+  padding: .8rem 1.6rem;
+  background-color: #444444;
+  border-radius: .5rem;
+}
+.p2>a{
+    text-decoration: none;
+    color: white;
+}
+    </style>
+
+<link rel="stylesheet" href="/css/navbar.css">
+<link rel="stylesheet" href="/css/footer.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+    <!-- <div class="info">
+        <div class="info-container">
+            <p>Bro, its a blog project <br> what else could you possibly need to know.</p>
+        </div>
+    </div> -->
+    <section class="main-heading">
+        <div class="main-heading-container">
+            <p class="p1">CONTACT US</p>
+            <h1>A<span>XOL</span>E.</h1>
+            <!-- <p class="p2">WRITE THE FUCK OUTTA&nbsp;<span style="text-decoration: underline; font-weight: 500;">YE HEART.</span></p> -->
+            <p class="p2"><a href="mailto:theblogprojectt@gmail.com">SEND EMAIL</a></p>
+        </div>
+    </section>
+    
+    <%- include('partials/footer') %>
+</body>
+</html>

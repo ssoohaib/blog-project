@@ -1,6 +1,7 @@
 const mysql=require('mysql')
 const timestamp = require('time-stamp');
-const path=require('path')
+const path=require('path');
+const e = require('express');
 require('dotenv').config()
 
 var conn = mysql.createConnection({
@@ -13,6 +14,29 @@ var conn = mysql.createConnection({
 conn.connect(err=>{});
 
 
+exports.get_blogs_type=(req,res)=>{
+    console.log('pop--'+req.body.cars);
+    let sql="";
+
+    if(req.body.cars=='ALL'){
+        sql="select * from blogs"
+    }else{
+        sql="select * from blogs where category='"+req.body.cars+"'"
+    }
+    console.log(sql);
+    conn.query(sql,(err,result)=>{
+        if(err) throw err
+
+        if(!result.length){}
+
+        res.render('home',{
+            cat:req.body.filter,
+            blogs:result
+        })
+    })
+
+}
+
 
 exports.get_blogs_all=(req,res)=>{
 
@@ -23,6 +47,7 @@ exports.get_blogs_all=(req,res)=>{
         if(!result.length){}
 
         res.render('home',{
+            cat:'ALL',
             blogs:result
         })
     })
